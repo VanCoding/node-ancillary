@@ -10,5 +10,5 @@ ancillary.createServer(function(c){
         console.log(d+"");
     });
     c.write("child: hello parent");
-}).listen("/ancillary");
+}).listen("/ancillary/simple");
 

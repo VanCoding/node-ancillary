@@ -23,7 +23,7 @@ cp.fork(__dirname+"/simple_child.js");
 
 //start tcp server & send all incoming connections to simple_child.js
 net.createServer(function(c){    
-    ancillary.send("/ancillary",c);
+    ancillary.send("/ancillary/simple",c);
 }).listen(7766);
 
 //wait 1 second, then emulate an incoming connection to our tcp server
