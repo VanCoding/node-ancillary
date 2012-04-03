@@ -19,7 +19,7 @@ var net = require("net");
 var cp = require("child_process");
 
 //start simple_child.js
-cp.fork("./simple_child.js");
+cp.fork(__dirname+"/simple_child.js");
 
 //start tcp server & send all incoming connections to simple_child.js
 net.createServer(function(c){    
