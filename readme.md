@@ -12,7 +12,8 @@ build
 
 Requiring
 -----------------------
-var ancillary = require("ancillary");
+
+    var ancillary = require("ancillary");
 
 
 Listening for sockets
