@@ -4,6 +4,7 @@ var anc = require("ancillary");
 var server = anc.createServer();
 
 server.on("request",function(req,res){
+    res._last = true;
     res.end("A: "+req.url);
 });
 server.enableHttp();
