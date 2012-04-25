@@ -75,15 +75,15 @@ it by yourself using the module "ws".
 
 ##Listening for WebSockets
 
-var anc = require("ancillary");
-var http = require("http");
-var ws = require("ws");
-
-var s = anc.createHttpServer();
-s.listen("uniqueserverID");
-
-new ws.Server({server:s}).on("connection",function(c){
-
-    //handle connection here
-
-});
+    var anc = require("ancillary");
+    var http = require("http");
+    var ws = require("ws");
+    
+    var s = anc.createHttpServer();
+    s.listen("uniqueserverID");
+    
+    new ws.Server({server:s}).on("connection",function(c){
+    
+        //handle connection here
+    
+    });
