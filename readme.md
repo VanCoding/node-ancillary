@@ -5,8 +5,8 @@ processes that are completely unrelated. The processes that exchange sockets
 can be started seperately.
 
 ##build
-    node-waf configure
-    node-waf build
+    node-gyp configure
+    node-gyp build
 
 ##Requiring
 
