@@ -14,7 +14,7 @@ written to the console.
 */
 
 //load modules
-var ancillary = require("ancillary");
+var ancillary = require("../index.js");
 var net = require("net");
 var cp = require("child_process");
 
@@ -24,18 +24,20 @@ cp.fork(__dirname+"/simple_child.js");
 //start tcp server & send all incoming connections to simple_child.js
 net.createServer(function(c){    
     ancillary.send("/ancillary/simple",c);
-}).listen(7766);
+}).listen(1234);
 
 //wait 1 second, then emulate an incoming connection to our tcp server
 //send a message to the connection every second & log all incoming data
 //from the child
 setTimeout(function(){
-    var c = net.connect(7766,function(){
+    var c = net.connect(1234,function(){    
+        
         setInterval(function(){
             c.write("parent: hello child");
-        },1000);
+        },1000);        
+        
         c.on("data",function(d){
             console.log(d+"");
-        });        
+        });     
     });
 },1000);

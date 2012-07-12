@@ -1,5 +1,5 @@
 var http = require("http");
-var anc = require("ancillary");
+var anc = require("../index.js");
 var cp = require("child_process");
 
 http.createServer(function(req,res){

@@ -19,48 +19,41 @@
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef TCP_WRAP_H_
-#define TCP_WRAP_H_
+#ifndef PIPE_WRAP_H_
+#define PIPE_WRAP_H_
 #include "stream_wrap.h"
 
 namespace node {
 
-class TCPWrap : public StreamWrap {
+class PipeWrap : StreamWrap {
  public:
+  uv_pipe_t* UVHandle();
+
   static v8::Local<v8::Object> Instantiate();
-  static TCPWrap* Unwrap(v8::Local<v8::Object> obj);
+  static PipeWrap* Unwrap(v8::Local<v8::Object> obj);
   static void Initialize(v8::Handle<v8::Object> target);
 
-  uv_tcp_t* UVHandle();
-
  private:
-  TCPWrap(v8::Handle<v8::Object> object);
-  ~TCPWrap();
+  PipeWrap(v8::Handle<v8::Object> object, bool ipc);
 
   static v8::Handle<v8::Value> New(const v8::Arguments& args);
-  static v8::Handle<v8::Value> GetSockName(const v8::Arguments& args);
-  static v8::Handle<v8::Value> GetPeerName(const v8::Arguments& args);
-  static v8::Handle<v8::Value> SetNoDelay(const v8::Arguments& args);
-  static v8::Handle<v8::Value> SetKeepAlive(const v8::Arguments& args);
   static v8::Handle<v8::Value> Bind(const v8::Arguments& args);
-  static v8::Handle<v8::Value> Bind6(const v8::Arguments& args);
   static v8::Handle<v8::Value> Listen(const v8::Arguments& args);
   static v8::Handle<v8::Value> Connect(const v8::Arguments& args);
-  static v8::Handle<v8::Value> Connect6(const v8::Arguments& args);
   static v8::Handle<v8::Value> Open(const v8::Arguments& args);
 
 #ifdef _WIN32
-  static v8::Handle<v8::Value> SetSimultaneousAccepts(const v8::Arguments& args);
+  static v8::Handle<v8::Value> SetPendingInstances(const v8::Arguments& args);
 #endif
 
   static void OnConnection(uv_stream_t* handle, int status);
   static void AfterConnect(uv_connect_t* req, int status);
 
-  uv_tcp_t handle_;
+  uv_pipe_t handle_;
 };
 
 
 }  // namespace node
 
 
-#endif  // TCP_WRAP_H_
+#endif  // PIPE_WRAP_H_
