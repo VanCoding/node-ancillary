@@ -1,4 +1,4 @@
-#anillary
+#ancillary
 
 This module for node.js allows you to send socket objects to other node.js
 processes that are completely unrelated. The processes that exchange sockets
