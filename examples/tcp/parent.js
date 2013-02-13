@@ -14,16 +14,16 @@ written to the console.
 */
 
 //load modules
-var ancillary = require("../index.js");
+var ancillary = require("../../index.js");
 var net = require("net");
 var cp = require("child_process");
 
 //start simple_child.js
-cp.fork(__dirname+"/simple_child.js");
+cp.fork(__dirname+"/child.js");
 
 //start tcp server & send all incoming connections to simple_child.js
 net.createServer(function(c){    
-    ancillary.send("/ancillary/simple",c);
+    ancillary.send(__dirname+"/child.js",c);
 }).listen(1234);
 
 //wait 1 second, then emulate an incoming connection to our tcp server

@@ -1,5 +1,5 @@
 //load modules
-var ancillary = require("../index.js");
+var ancillary = require("../../index.js");
 var net = require("net");
 
 //create a server that listens for incoming sockets
@@ -11,5 +11,5 @@ ancillary.createServer(function(c){
         console.log(d+"");
     });
     c.write("child: hello parent");
-}).listen("/ancillary/simple");
+}).listen(__filename);
 
