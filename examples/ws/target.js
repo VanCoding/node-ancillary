@@ -13,8 +13,8 @@ function route(req,res,data){
         //handle the upgrade request
         
         wss.handleUpgrade(req,res,data,function(c){
-            console.log("got connection");
-            var i = 0;
+			console.log("got connection");
+			var i = 0;
             setInterval(function(){
                 c.send((i++)+"");
             },1000);
@@ -31,6 +31,9 @@ function route(req,res,data){
                         "var ws = new WebSocket('wss://'+location.host);",
                         "ws.onopen=function(){",
                             "console.log('connected to server');",
+							"setInterval(function(){",
+								"ws.send('hello world!')",
+							"},1000);",
                         "}",
                         "ws.onmessage=function(d){",
                             "console.log('got data from server: '+d.data);",
