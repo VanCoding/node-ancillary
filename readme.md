@@ -12,6 +12,6 @@ can be started seperately.
 
 See the tcp example
 
-#HTTP
+#License
 
-See the spdy example
+GPL (please contact me for other licenses)
