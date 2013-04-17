@@ -6,9 +6,6 @@
   "directories": {
     "example": "examples"
   },
-  "dependencies":{
-    "http.js":"1.x.x"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "install": "node-gyp rebuild"
